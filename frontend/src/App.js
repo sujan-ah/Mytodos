@@ -33,15 +33,6 @@ function App() {
   };
 
   let handleSubmit = () => {
-    const weekday = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
     const userObject = {
       newProject: newProject,
       oldProject: oldProject,
