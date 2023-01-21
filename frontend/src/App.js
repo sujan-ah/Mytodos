@@ -33,15 +33,25 @@ function App() {
   };
 
   let handleSubmit = () => {
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
     const userObject = {
       newProject: newProject,
       oldProject: oldProject,
       javaVedio: javaVedio,
       engSpoken: engSpoken,
-      date: `${new Date().getFullYear()}-${
+      date: `${new Date().getDate()}-${
         new Date().getMonth() + 1
-      }-${new Date().getDate()}-${new Date().getHours()}-${new Date().getMinutes()}`,
+      }-${new Date().getFullYear()}`,
     };
+
     axios.post("http://localhost:8000/api/todos", userObject);
   };
 
@@ -64,7 +74,7 @@ function App() {
 
       <div className="flex mb-10 w-96 bg-white m-auto p-10 rounded-xl drop-shadow-md mt-24">
         <div className=" flex flex-col gap-7">
-          <h1 className="text-4xl font-bold mb-10 opacity-80">
+          <h1 className="text-4xl font-bold mb-10 opacity-90">
             Today work done
           </h1>
           <div className="flex">
@@ -114,7 +124,8 @@ function App() {
             <div className="ml-5 mt-5 w-72 h-76 bg-white  p-5 rounded-xl drop-shadow-md text-xl font-bold ">
               <span>{item.key}</span>
               <h6 className="text-sm text-black ml-5 mb-5 opacity-50">
-                {moment(item.date, "YYYYMMDD hh:mm").fromNow()}
+                <span className="mr-2 ml-2">{moment().format("dddd")}</span>
+                {moment().format(item.date, "L")}
               </h6>
               <h1 className="p-5 text-start text-green-600	">
                 <span className="text-black mr-5 opacity-70">1</span>
